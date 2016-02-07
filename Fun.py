@@ -9,7 +9,7 @@ from tabulate import tabulate
 import wikipedia
 from wikipedia.exceptions import PageError, DisambiguationError
 
-#test
+#test 22.23232
 
 def wikiSearch(searchWord):
     try:
