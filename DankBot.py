@@ -15,9 +15,12 @@ from wikipedia.exceptions import PageError, DisambiguationError
 import Dota
 import Fun
 
+email = #insert email
+password = #insert password
+
 client = discord.Client()
-client.login('moybot@hotmail.com', 'password')
-steamKey = '6CBA26B8D032A74753AFDC81584E3245'
+client.login(email, password)
+#steamKey = 
 session = requests.Session()
 ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n/10%10!=1)*(n%10<4)*n%10::4])
 
