@@ -9,6 +9,8 @@ from tabulate import tabulate
 import wikipedia
 from wikipedia.exceptions import PageError, DisambiguationError
 
+#test
+
 def wikiSearch(searchWord):
     try:
         summary = wikipedia.summary(searchWord)
