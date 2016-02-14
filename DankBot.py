@@ -1,4 +1,4 @@
-# coding: utf-8
+# encoding=utf-8
 
 import discord
 import json
@@ -15,12 +15,12 @@ from wikipedia.exceptions import PageError, DisambiguationError
 import Dota
 import Fun
 
-email = #insert email
-password = #insert password
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 client = discord.Client()
-client.login(email, password)
-#steamKey = 
+client.login('moybot@hotmail.com', 'password')
+steamKey = '6CBA26B8D032A74753AFDC81584E3245'
 session = requests.Session()
 ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n/10%10!=1)*(n%10<4)*n%10::4])
 
@@ -100,7 +100,7 @@ def on_message(message):
                     players += player + '\n\t'
                 counter += 1
             client.send_message(message.channel, """Current commands:\n\t- !lenny\n\t- !dickbutt\n\t- !dota stats $player\n\t- !dota counter $hero\n\t- !add dotaplayer $username $dotabuff_player_ID\n\t- !wiki $wikiSearchWord(s)
-\t- !urban $word(s)\n\t- !report @user
+\t- !urban $word(s)\n\t- !report @user\n\t- !cummies\n\t- !delete daddy
 Dota players included:""" + '\n\t' + players)
 
         elif word[0] == '!wiki':
@@ -152,6 +152,29 @@ Dota players included:""" + '\n\t' + players)
                 f.close()
             else:
                 client.send_message(message.channel, reported + ' does not exist as a user in this server.')
+        elif word[0] == '!roll':
+            if len(word) == 2:
+                client.send_message(message.channel, Fun.roll(word[1]))
+            else:
+                client.send_message(message.channel, Fun.roll())
+        elif word[0] == '!cummies':
+            client.send_message(message.channel, Fun.cummies())
+        elif word[0] == '!delete' and word[1] == 'daddy':
+            client.send_message(message.channel, Fun.daddy())
+        elif word[0] == '!checkem':
+            response = Fun.checkem()
+            client.send_message(message.channel, response)
+        elif word[0] == '!rps':
+            if rock_queue == 0:
+                firstPlayer = message.author.name
+                client.send_message(message.channel, "%s is playing Rock Paper Scissors, need 1 more player." % firstPlayer)
+                rock_queue = 1
+            elif rock_queue == 1:
+                secondPlayer = message.author.name
+                client.send_message(message.channel, "%s has joined the game." % secondPlayer)
+                client.send_message(message.channel, "Rock. Paper. Scissors!")
+                client.send_message(message.channel, Fun.rps(firstPlayer, secondPlayer))
+                rock_queue = 0
 
     	#baseURL = https://api.steampowered.com/IDOTA2Match_570/
     	# Calum's commands
